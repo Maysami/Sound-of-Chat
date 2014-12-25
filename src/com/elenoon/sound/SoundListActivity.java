@@ -1,80 +1,74 @@
 package com.elenoon.sound;
 
-
 import android.app.Activity;
-import android.content.Context;
+import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageButton;
+import android.view.View;
 
-import java.io.File;
-import java.io.FilenameFilter;
+import android.widget.AdapterView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class SoundListActivity extends Activity {
-    // SDCard Path
-    final String MEDIA_PATH = new String("/sdcard/");
-    private ArrayList<HashMap<String, String>> songsList =new ArrayList<HashMap<String, String>>();
+/**
+ * Created by elenoon on 12/25/2014.
+ */
+public class SoundListActivity extends ListActivity {
+    // Songs list
+    public ArrayList<HashMap<String, String>> songsList = new ArrayList<HashMap<String, String>>();
 
-    final Context context = this;
-    private ImageButton btnBack;
-    private ImageButton btnHome;
-
-    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.soundlist);
 
-        for (Object o : songsList) {
-            System.out.println(o);
+        ArrayList<HashMap<String, String>> songsListData = new ArrayList<HashMap<String, String>>();
+
+        SoundManager plm = new SoundManager();
+        // get all songs from sdcard
+        this.songsList = plm.getPlayList();
+
+        // looping through playlist
+        for (int i = 0; i < songsList.size(); i++) {
+            // creating new HashMap
+            HashMap<String, String> song = songsList.get(i);
+
+            // adding HashList to ArrayList
+            songsListData.add(song);
         }
 
-        /*addListenerOnButton();*/
-    }
+        // Adding menuItems to ListView
+        ListAdapter adapter = new SimpleAdapter(this, songsListData,
+                R.layout.playlist_item, new String[] { "songTitle" }, new int[] {
+                R.id.songTitle });
 
-    /*Function to read all mp3 files from sdcard and store the details in ArrayList*/
+        setListAdapter(adapter);
 
-    public ArrayList<HashMap<String, String>> getPlayList(){
+        // selecting single ListView item
+        ListView lv = getListView();
+        // listening to single listitem click
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-        File home = new File(MEDIA_PATH);
-        if (home.listFiles(new FileExtensionFilter()).length > 0) {
-            for (File file : home.listFiles(new FileExtensionFilter())) {
-                HashMap<String, String> song = new HashMap<String, String>();
-                song.put("songTitle", file.getName().substring(0, (file.getName().length() - 4)));
-                song.put("songPath", file.getPath());
-
-                // Adding each song to SongList
-                songsList.add(song);
-            }
-        }
-        // return songs list array
-        return songsList;
-    }
-
-    class FileExtensionFilter implements FilenameFilter {
-        public boolean accept(File dir, String name)
-        {
-            return (name.endsWith(".mp3") || name.endsWith(".MP3"));
-        }
-    }
-
-//button back && Home
- /*   public void addListenerOnButton() {
-        btnBack = (ImageButton) findViewById(R.id.imageBack);
-        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View arg0) {
-               finish();
+            public void onItemClick(AdapterView<?> parent, View view,int position, long id)
+            {
+                // getting listitem index
+                int songIndex = position;
+                // Starting new intent
+                Intent in = new Intent(getApplicationContext(),MusicPlayerActivity.class);
+                // Sending songIndex to PlayerActivity
+                in.putExtra("songIndex", songIndex);
+                setResult(100, in);
+                // Closing PlayListView
+                finish();
             }
         });
-        btnHome = (ImageButton) findViewById(R.id.imageHome);
-        btnHome.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View arg0) {
-            Intent intent = new Intent(context, MainActivity.class);
-            startActivity(intent);
-        }
-    });
 
-    }*/
+    }
 }
+        
+
+

@@ -62,20 +62,22 @@
             android:layout_above="@id/footer"
             android:layout_below="@id/header"
             android:gravity="left" android:layout_alignParentLeft="true">
-        <ScrollView
-                android:id="@+id/scrollablContent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_above="@+id/footer"
-                android:layout_below="@+id/header"
-                tools:ignore="NotSibling">
+        
             <LinearLayout
                     android:id="@+id/content1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="vertical">
+                
+                <ListView
+                        android:id="@+id/list"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:divider="#242424"
+                        android:dividerHeight="1dp"
+                        android:listSelector="@drawable/list_selector" />
             </LinearLayout>
-        </ScrollView>
+ 
 
     </RelativeLayout>
 </RelativeLayout>
