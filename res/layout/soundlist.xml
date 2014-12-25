@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+    <!-- Header aligned to top -->
+    <RelativeLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="#ffaeaeae"
+            android:gravity="center" >
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Music List"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:textSize="20sp" />
+
+    </RelativeLayout>
+    <!-- Footer aligned to bottom -->
+    <RelativeLayout
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#ffaeaeae">
+       <!-- <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="HTTP://ELENOON.IR"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:textSize="20sp"/>-->
+
+        <ImageButton
+                android:id="@+id/imageBack"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="false"
+                android:src="@drawable/ic_back"
+                android:gravity="left"/>
+        <ImageButton
+                android:id="@+id/imageHome"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_home"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/imageBack"/>
+
+    </RelativeLayout>
+    <!-- Content below header and above footer -->
+    <RelativeLayout
+            android:id="@+id/content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@id/footer"
+            android:layout_below="@id/header"
+            android:gravity="left" android:layout_alignParentLeft="true">
+        <ScrollView
+                android:id="@+id/scrollablContent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/footer"
+                android:layout_below="@+id/header"
+                tools:ignore="NotSibling">
+            <LinearLayout
+                    android:id="@+id/content1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+            </LinearLayout>
+        </ScrollView>
+
+    </RelativeLayout>
+</RelativeLayout>

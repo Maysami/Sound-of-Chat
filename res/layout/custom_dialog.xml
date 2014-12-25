@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+
+    <ImageButton
+            android:id="@+id/imageMusic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"/>
+
+    <TextView
+            android:id="@+id/text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFF"
+            android:layout_toRightOf="@+id/imageMusic"/>
+
+
+    <!--button Record-->
+    <ImageButton
+            android:id="@+id/imageRecord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_below="@+id/imageMusic"/>
+
+    <TextView
+            android:id="@+id/textRecord"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFF"
+            android:layout_alignTop="@+id/imageRecord"
+            android:layout_toEndOf="@+id/imageRecord"/>
+
+</RelativeLayout>
