@@ -36,6 +36,7 @@ public class MainActivity extends Activity implements OnMenuItemClickListener {
 
         findViewById(R.id.btn_click).setOnClickListener(new OnClickListener() {
 
+
             @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
             @Override
             public void onClick(View view) {

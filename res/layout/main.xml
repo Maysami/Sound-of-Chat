@@ -2,9 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                >
-    <!--android:background="#ff1a8dfc"-->
+                android:layout_height="match_parent" >
     <!-- Header aligned to top -->
     <RelativeLayout
             android:id="@+id/header"
@@ -20,19 +18,21 @@
                 android:textSize="20sp"
                 android:id="@+id/textView"/>
         <ImageButton
+                android:id="@+id/btn_click"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:gravity="left"
                 android:src="@drawable/ic_new_attachment"
-                android:id="@+id/btn_click"
                 android:clickable="true"
-                android:layout_toEndOf="@+id/btnOverflow"/>
+                android:layout_toEndOf="@+id/btnOverflow"
+                android:layout_toRightOf="@+id/btnOverflow"/>
         <ImageButton
+                android:id="@+id/btnOverflow"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:src="@drawable/ic_overflow"
-                android:id="@+id/btnOverflow"
-                android:clickable="true"/>
+                android:clickable="true"
+                android:layout_alignParentLeft="true"/>
 
     </RelativeLayout>
 
@@ -52,14 +52,15 @@
                  android:layout_alignParentLeft="true"
                  android:layout_alignParentTop="false"
                  android:src="@drawable/ic_back"
-                 android:gravity="left"/>
+                 android:gravity="left"
+                 />
         <ImageButton
                 android:id="@+id/imageHome"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:src="@drawable/ic_home"
                 android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/imageBack"/>
+                android:layout_toRightOf="@+id/imageBack"/>
 
         <ImageButton
                 android:id="@+id/imageCollapse"
@@ -94,18 +95,6 @@
                 android:gravity="center"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentEnd="true"/>
-
-                <!--<TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HTTP://ELENOON.IR"
-                android:textColor="#ffffffff"
-                android:textStyle="bold"
-                android:textSize="20sp"
-                android:id="@+id/textViewContent"
-                android:gravity="center"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"/>-->
 
     </RelativeLayout>
 </RelativeLayout>

@@ -14,10 +14,10 @@ import java.util.HashMap;
 public class SoundManager {
     
     // SDCard Path
-    final String MEDIA_PATH = new String("/sdcard/");
+    final String MEDIA_PATH = new String("/sdcard/music/");
     private ArrayList<HashMap<String, String>> songsList = new ArrayList<HashMap<String, String>>();
 
-    
+
     
     /*Function to read all mp3 files from sdcard and store the details in ArrayList*/
 
@@ -42,7 +42,8 @@ public class SoundManager {
 
     class FileExtensionFilter implements FilenameFilter {
         public boolean accept(File dir, String name) {
-            return (name.endsWith(".mp3") || name.endsWith(".MP3"));
+            
+            return (name.endsWith(".mp3") || name.endsWith(".MP3") || name.endsWith(".wav"));
         }
     }
 }
