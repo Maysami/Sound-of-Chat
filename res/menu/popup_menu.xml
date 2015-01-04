@@ -6,17 +6,20 @@
         <item
                 android:id="@+id/item_movies"
                 android:showAsAction="ifRoom|withText"
+                android:icon="@android:drawable/ic_menu_gallery"
                 android:title="Movies"
                 android:visible="true"/>
         <item
                 android:id="@+id/item_music"
                 android:showAsAction="ifRoom|withText"
+                android:icon="@android:drawable/ic_menu_upload_you_tube"
                 android:title="Music"
                 android:visible="true"/>
 
         <item
                 android:id="@+id/item_comedy"
                 android:showAsAction="ifRoom|withText"
+                android:icon="@android:drawable/ic_menu_edit"
                 android:title="Comedy"
                 android:visible="true"/>
 

@@ -1,0 +1,5 @@
+<root>
+    <item name='android.view.MotionEvent ACTION_DOWN'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

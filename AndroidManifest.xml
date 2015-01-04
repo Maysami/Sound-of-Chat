@@ -21,10 +21,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.elenoon.sound.CustomDialogActivity" android:label="@string/app_name"/>
+        <activity android:name="com.elenoon.sound.CustomDialogActivity" android:theme="@android:style/Theme.Dialog" android:label="@string/app_name"/>
         <activity android:name="com.elenoon.sound.SoundListActivity" android:label="@string/app_name"/>
-        <activity android:name="com.elenoon.sound.AudioRecorderActivity" android:label="@string/app_name"/>
-        <activity android:name="com.elenoon.sound.MusicPlayerActivity" android:label="@string/app_name"/>
+        <activity android:name="com.elenoon.sound.AudioRecorderActivity" android:theme="@android:style/Theme.Dialog" android:label="@string/app_name"/>
+        <activity android:name="com.elenoon.sound.MusicPlayerActivity" android:label="@string/app_name"/>        
         
         
     </application>

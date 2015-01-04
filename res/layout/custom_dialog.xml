@@ -4,34 +4,42 @@
                 android:layout_height="fill_parent" >
 
     <!--button MusicList-->
-    <ImageButton
+    <Button
             android:id="@+id/imageMusic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"/>
-
-    <TextView
-            android:id="@+id/text"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FFF"
-            android:layout_toRightOf="@+id/imageMusic"/>
+            android:drawableLeft="@drawable/ic_music"
+            android:gravity="left"
+            android:text="Music List"
+            android:drawablePadding="10dp"
+            android:layout_marginRight="5dp"/>
+
+   <!-- <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ff000000"
+            android:textStyle="normal"
+            android:layout_marginRight="6dp"/>-->
 
 
     <!--button Record-->
-    <ImageButton
+    <Button
             android:id="@+id/imageRecord"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:layout_below="@+id/imageMusic"/>
-
-    <TextView
-            android:id="@+id/textRecord"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textColor="#FFF"
-            android:layout_alignTop="@+id/imageRecord"
-            android:layout_toEndOf="@+id/imageRecord"/>
+            android:gravity="left"
+            android:text="Record Sound"
+            android:drawableLeft="@drawable/ic_record"
+            android:layout_marginRight="5dp"
+            android:drawablePadding="10dp"
+            android:layout_below="@+id/imageMusic"/>
+
+   <!-- <TextView
+            android:id="@+id/textRecord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ff000000"
+            android:textStyle="normal" />-->
 
 </RelativeLayout>

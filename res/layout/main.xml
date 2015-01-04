@@ -36,12 +36,12 @@
 
     </RelativeLayout>
 
-
+    
     <!-- Footer aligned to bottom -->
     <RelativeLayout
             android:id="@+id/footer"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_alignParentBottom="true"
             android:background="#ffaeaeae">
 
@@ -58,7 +58,7 @@
                 android:id="@+id/imageHome"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:src="@drawable/ic_home"
+                android:src="@android:drawable/sym_action_email"
                 android:layout_alignParentTop="true"
                 android:layout_toRightOf="@+id/imageBack"/>
 
@@ -93,8 +93,44 @@
                 android:background="#ff9391ff"
                 android:textSize="20sp"
                 android:gravity="center"
-                android:layout_alignParentBottom="true"
+                android:layout_above="@+id/relRecord"
+                android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"/>
+    <RelativeLayout 
+            android:id="@+id/relRecord"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#fff0f0f0" 
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true" 
+            android:layout_alignParentStart="true">
+        <ImageButton
+                android:id="@+id/btnRecord"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_mic"
+                android:clickable="true"
+                android:state_pressed="true"
+                android:layout_alignParentLeft="true"/>
+        <ImageButton 
+                android:id="@+id/btnPic" 
+                android:layout_width="wrap_content" 
+                android:layout_height="50dp"
+                android:gravity="left" 
+                android:src="@android:drawable/ic_menu_camera"
+                android:clickable="true"
+                android:layout_toEndOf="@+id/btnRecord" 
+                android:layout_toRightOf="@+id/btnRecord"/>
+
+        <ImageButton
+                android:id="@+id/btn"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:src="@android:drawable/ic_menu_more"
+                android:clickable="true"
+                android:layout_alignParentRight="true"/>
+       
+    </RelativeLayout>
 
     </RelativeLayout>
 </RelativeLayout>

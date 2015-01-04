@@ -4,10 +4,12 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -16,6 +18,9 @@ import android.widget.PopupMenu;
 import android.widget.PopupMenu.OnMenuItemClickListener;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.IOException;
+
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class MainActivity extends Activity implements OnMenuItemClickListener {
     final Context context = this;
@@ -23,6 +28,9 @@ public class MainActivity extends Activity implements OnMenuItemClickListener {
     private ImageButton btnBack;
     private ImageButton btnHome;
     private Button button;
+    private MediaRecorder recorder;
+    File audioFile = null;
+    private ImageButton btnRecord ;
 
     //    Button button;
     @Override
@@ -100,37 +108,17 @@ public class MainActivity extends Activity implements OnMenuItemClickListener {
             }
 
         });
-    }
-}
-
-
-
-
-            /*    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                alertDialogBuilder.setTitle("Please Select one of Items .");// set title
-                alertDialogBuilder// set dialog message
-
-                        .setPositiveButton("Music List",new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,int id) {
-                                Intent intent = new Intent(context, SoundListActivity.class);
-                                startActivity(intent);
-
-
-                            }
-                        })
-                        .setNegativeButton("Record Sound",new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,int id) {
-                                // if this button is clicked, just close
-                                // the dialog box and do nothing
-                                dialog.cancel();
-                            }
-                        });
-                // create alert dialog
-                AlertDialog alertDialog = alertDialogBuilder.create();
-                // show it
-                alertDialog.show();*//*
+/*
+        btnRecord.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                
+                return true;
+                
             }
+           
         });
-    }
-}
 */
+    }
+    
+}

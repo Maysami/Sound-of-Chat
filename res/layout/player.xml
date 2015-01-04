@@ -24,15 +24,36 @@
                 android:paddingLeft="10dp"
                 android:textStyle="bold"
                 android:layout_marginTop="10dp"/>
-        <!-- Playlist button -->
+       <!-- &lt;!&ndash; Playlist button &ndash;&gt;
         <ImageButton
                 android:id="@+id/btnPlaylist"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:src="@drawable/btn_playlist"
-                android:background="@null"/>
+                android:background="@null"/>-->
 </LinearLayout>
+    <LinearLayout
+            android:id="@+id/songThumbnail"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@layout/bg_player_header"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:gravity="left"
+            android:layout_below="@id/player_header_bg">
 
+        <Button
+                android:id="@+id/btnSendMusic"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Send Selected Music"
+                android:textStyle="bold"
+                android:background="@null"
+                android:layout_marginTop="5dp"
+                android:layout_below="@+id/player_header_bg"
+                android:layout_centerHorizontal="true"/>
+
+    </LinearLayout>
     <!-- Player Footer -->
     <LinearLayout
             android:id="@+id/player_footer_bg"

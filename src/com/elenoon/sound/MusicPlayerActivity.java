@@ -8,10 +8,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.SeekBar;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,6 +28,7 @@ public class MusicPlayerActivity extends Activity implements MediaPlayer.OnCompl
     private ImageButton btnPlaylist;
     private ImageButton btnRepeat;
     private ImageButton btnShuffle;
+    private Button btnSendMusic;
     private SeekBar songProgressBar;
     private TextView songTitleLabel;
     private TextView songCurrentDurationLabel;
@@ -54,12 +52,14 @@ public class MusicPlayerActivity extends Activity implements MediaPlayer.OnCompl
         setContentView(R.layout.player);
 
         // All player buttons
+        
         btnPlay = (ImageButton) findViewById(R.id.btnPlay);
         btnForward = (ImageButton) findViewById(R.id.btnForward);
         btnBackward = (ImageButton) findViewById(R.id.btnBackward);
         btnNext = (ImageButton) findViewById(R.id.btnNext);
         btnPrevious = (ImageButton) findViewById(R.id.btnPrevious);
-        btnPlaylist = (ImageButton) findViewById(R.id.btnPlaylist);
+        btnSendMusic = (Button) findViewById(R.id.btnSendMusic);
+        /*btnPlaylist = (ImageButton) findViewById(R.id.btnPlaylist);*/
         btnRepeat = (ImageButton) findViewById(R.id.btnRepeat);
         btnShuffle = (ImageButton) findViewById(R.id.btnShuffle);
         songProgressBar = (SeekBar) findViewById(R.id.songProgressBar);
@@ -78,8 +78,20 @@ public class MusicPlayerActivity extends Activity implements MediaPlayer.OnCompl
 
         // Getting all songs list
         songsList = songManager.getPlayList();
-       
-        playSong(0);
+        
+        //*******Geraftan Music Entekhab shode ,************************
+        // Position ke dar class SoundListActivity Ast Be songIndex Mirizad
+        int newInt = 0;
+        if (savedInstanceState == null) {
+            Bundle bundle = getIntent().getExtras();         
+            if(bundle == null) { newInt= -1;}
+            else {
+                newInt= bundle.getInt("songIndex");}
+        } else {
+//            newInt=  savedInstanceState.getSerializable("so");
+        }
+        playSong(newInt);
+
 
         btnPlay.setOnClickListener(new View.OnClickListener() {
 
@@ -234,10 +246,22 @@ public class MusicPlayerActivity extends Activity implements MediaPlayer.OnCompl
             }
         });
 
+        btnSendMusic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Your Music has been sent", Toast.LENGTH_SHORT).show();
+                finish();
+                mp.stop();
+            }
+        
+        });
+            
+        }
         /**
          * Button Click event for Play list click event
          * Launches list activity which displays list of songs
          * */
+/*
         btnPlaylist.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -247,8 +271,9 @@ public class MusicPlayerActivity extends Activity implements MediaPlayer.OnCompl
                 mp.stop();
             }
         });
+*/
 
-    }
+
 
     /**
      * Receiving song index from playlist view

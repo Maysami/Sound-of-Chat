@@ -59,9 +59,9 @@ public class SoundListActivity extends ListActivity {
                 int songIndex = position;
                 // Starting new intent
                 Intent in = new Intent(getApplicationContext(),MusicPlayerActivity.class);
-                startActivity(in);
                 // Sending songIndex to PlayerActivity
                 in.putExtra("songIndex", songIndex);
+                startActivity(in);
                 setResult(100, in);
                 // Closing PlayListView
                 finish();
