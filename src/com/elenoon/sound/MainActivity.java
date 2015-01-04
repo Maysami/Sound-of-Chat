@@ -2,12 +2,16 @@ package com.elenoon.sound;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -108,17 +112,64 @@ public class MainActivity extends Activity implements OnMenuItemClickListener {
             }
 
         });
-/*
+        //Capture button release in Android of stackoverflow
+        btnRecord = (ImageButton) findViewById(R.id.btnRecord);
         btnRecord.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 
+                if(motionEvent.getAction() == MotionEvent.ACTION_DOWN) 
+                {
+                    
+                    Toast.makeText(getApplicationContext(), "Recording started", Toast.LENGTH_LONG).show();
+                    File sampleDir = Environment.getExternalStorageDirectory();
+                    try {
+                        audioFile = File.createTempFile("sound", ".mp3", sampleDir);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    recorder = new MediaRecorder();
+                    recorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+                    recorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+                    recorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+                    recorder.setAudioEncodingBitRate(16);
+                    recorder.setAudioSamplingRate(44100);
+                    recorder.setOutputFile(audioFile.getAbsolutePath());
+                    try {
+                        recorder.prepare();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    recorder.start();
+
+                    
+                } 
+                else if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                    Toast.makeText(getApplicationContext(), "Audio recorded successfully",
+                            Toast.LENGTH_LONG).show();
+                    recorder.stop();
+                    recorder.release();
+                    recorder = null;
+                    ContentValues values = new ContentValues(4);
+                    long current = System.currentTimeMillis();
+                    values.put(MediaStore.Audio.Media.TITLE, "audio" + audioFile.getName());
+                    values.put(MediaStore.Audio.Media.DATE_ADDED, (int)(current/1000));
+                    values.put(MediaStore.Audio.Media.MIME_TYPE, "audio/mp3");
+                    values.put(MediaStore.Audio.Media.DATA, audioFile.getAbsolutePath());
+                    ContentResolver contentResolver = getContentResolver();
+                    Uri base = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+                    Uri newUri = contentResolver.insert(base, values);
+
+                    sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, newUri));
+                    /*Toast.makeText(this, "Added File" + newUri, Toast.LENGTH_LONG).show();*/
+                }
+
                 return true;
                 
             }
            
         });
-*/
     }
     
 }
